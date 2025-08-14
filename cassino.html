@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tigrinho Slots - JS</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #222; color: white; }
+        h1 { margin-top: 20px; }
+        #resultado { font-size: 2em; margin: 20px 0; }
+        #historico { margin-top: 20px; text-align: left; display: inline-block; }
+        button {
+            background: gold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:disabled { background: gray; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <h1>🎰 Tigrinho Slots 🎰</h1>
+    <p id="status">Você começa com 10 créditos.</p>
+    <button id="botao">Girar</button>
+    <div id="resultado">🍒 | 🍋 | 🍉</div>
+
+    <div id="historico">
+        <h3>📜 Histórico de jogadas:</h3>
+        <ul id="listaHistorico"></ul>
+    </div>
+
+    <script>
+        const simbolos = ["🍒", "🍋", "🍉", "⭐", "🔔", "💎"];
+        let creditos = 10;
+        let historico = [];
+
+        const statusEl = document.getElementById("status");
+        const resultadoEl = document.getElementById("resultado");
+        const historicoEl = document.getElementById("listaHistorico");
+        const botao = document.getElementById("botao");
+
+        function rodar() {
+            return [
+                simbolos[Math.floor(Math.random() * simbolos.length)],
+                simbolos[Math.floor(Math.random() * simbolos.length)],
+                simbolos[Math.floor(Math.random() * simbolos.length)]
+            ];
+        }
+
+        async function animacaoRolagem() {
+            for (let i = 0; i < 10; i++) {
+                resultadoEl.textContent = rodar().join(" | ");
+                await new Promise(r => setTimeout(r, 100));
+            }
+        }
+
+        async function jogar() {
+            if (creditos <= 0) {
+                statusEl.textContent = "💸 Fim de jogo!";
+                botao.disabled = true;
+                return;
+            }
+
+            creditos--;
+            statusEl.textContent = `🪙 Créditos: ${creditos}`;
+            
+            await animacaoRolagem();
+
+            let [r1, r2, r3] = rodar();
+            let resultado = `${r1} | ${r2} | ${r3}`;
+            resultadoEl.textContent = resultado;
+
+            let status;
+            if (r1 === r2 && r2 === r3) {
+                creditos += 5;
+                status = "🎉 3 iguais! +5 créditos!";
+            } else if (r1 === r2 || r2 === r3 || r1 === r3) {
+                creditos += 1;
+                status = "👍 2 iguais! +1 crédito!";
+            } else {
+                status = "🙁 Nada dessa vez.";
+            }
+
+            statusEl.textContent = `${status} Créditos: ${creditos}`;
+            historico.push({ resultado, status });
+
+            let item = document.createElement("li");
+            item.textContent = `${resultado} --> ${status}`;
+            historicoEl.appendChild(item);
+        }
+
+        botao.addEventListener("click", jogar);
+    </script>
+</body>
+</html>
