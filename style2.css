@@ -1,0 +1,96 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Cartão principal */
+.card {
+    background-color: #242424;
+    padding: 30px 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Imagem de perfil */
+.profile-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #00d4ff;
+    margin-bottom: 15px;
+}
+
+/* Texto */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+/* Links sociais */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Cores específicas */
+.instagram { background: #e1306c; }
+.facebook { background: #1877f2; }
+.twitter { background: #1da1f2; }
+.linkedin { background: #0077b5; }
+.youtube { background: #ff0000; }
+
+.social-links a:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+/* Rodapé */
+footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #666;
+}

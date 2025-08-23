@@ -1,0 +1,39 @@
+html {
+    background-color: grey;
+}
+
+h1 {
+    color:lightcoral;
+    font-size:larger;
+    text-align: center;
+    background-color: bisque;
+    size: 10px;
+
+}
+
+p, p2{
+    color:black;
+    font-size: medium;
+    text-align: center;
+    background-color: bisque;
+    size: 20px;
+
+}
+
+a {
+    color:black;
+    font-size: 50px;
+    text-align: center;
+    background-color: bisque;
+    size: 100px;
+
+}
+
+button {
+    color: pink;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: aqua;
+    size:100px;
+}
